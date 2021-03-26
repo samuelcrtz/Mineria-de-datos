@@ -36,3 +36,31 @@ print("La suma de la columna de las Victimas Totales es::", ms['Victimas_Totales
 print("La suma de la columna de los Suicidios es:", ms['Suicidio'].sum())
 print("La media de la columna de las Victimas Totales es:", ms['Victimas_Totales'].mean())
 print("La media de la columna de los Suicidios es:", ms['Suicidio'].mean())
+print("La suma acumulada de la columna de las Victimas Totales es:", ms['Victimas_Totales'].cumsum())
+print("La suma acumulada de la columna de los Suicidios es:", ms['Suicidio'].cumsum())
+print("El resumen estadístico de la columna de las Victimas Totales es:", ms['Victimas_Totales'].describe())
+print("El resumen estadístico de la columna de los Suicidios es:", ms['Suicidio'].describe())
+print("La mediana de la columna de las Victimas Totales es:", ms['Victimas_Totales'].median())
+print("La mediana de la columna de los Suicidios es:", ms['Suicidio'].median())
+print("La varianza de la columna de las Victimas Totales es:", ms['Victimas_Totales'].var())
+print("La varianza de la columna de los Suicidios es:", ms['Suicidio'].var())
+print("La desviación estándar de la columna de las Victimas Totales es:", ms['Victimas_Totales'].std())
+print("La desviación estándar de la columna de los Suicidios es:", ms['Suicidio'].std())
+
+print("El promedio de víctimas totales en Estados Unidos es de:", ms['Victimas_Totales'].mean())
+
+print(ms.corr())
+
+Y = ms[ms['Problemas_de_Salud_Mental']=='Yes']
+Y.to_csv('SI_TIENEN.csv', index=False)
+
+#Data visualization
+ms['Muertes'].value_counts().sort_index().plot.bar()
+ms[ms['Victimas_Totales'] < 35]['Victimas_Totales'].plot.hist()
+ms.plot.area()
+sns.countplot(ms['Problemas_de_Salud_Mental'])
+plt.title("Problemas de Salud Mental")
+#Visualizacion con seaborn
+plt.show()
+sns.countplot(ms['Victimas_Totales'].head(60))
+plt.show()
